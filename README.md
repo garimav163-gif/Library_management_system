@@ -15,7 +15,8 @@ The Library Management System is a web-based application designed to manage and 
 - HTML (Structure)  
 - CSS (Styling)  
 ## Screenshots
-
 ![Login Page](login-page.png)
 ![Home Page](home-page.png)
 ![Dashboard](dashboard.png)
+![Books Page](books-page.png)
+![Fine Calculator](fine-calculator.png)
