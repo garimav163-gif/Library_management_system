@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Issue Book - Library Management</title>
+<link rel="icon" href="https://e7.pngegg.com/pngimages/223/94/png-clipart-new-testament-chapter-by-chapter-old-testament-logo-book-book-blue-other-thumbnail.png" type="image/x-icon">
+  <link rel="stylesheet" href="media.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f7f9fc;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+  .issue-book-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 360px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+  }
+  h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #555;
+  }
+  input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 15px;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #2a9d8f;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  button:hover {
+    background: #21867a;
+  }
+  .message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  .message.success {
+    background: #d4edda;
+    color: #155724;
+  }
+  .message.error {
+    background: #f8d7da;
+    color: #721c24;
+  }
+</style>
+</head>
+<body>
+
+<div class="issue-book-container">
+  <h2>Issue Book</h2>
+  <form id="issueBookForm">
+    <label for="bookId">Book ID</label>
+    <input type="text" id="bookId" name="bookId" required placeholder="Enter Book ID" />
+
+    <label for="memberId">Member ID</label>
+    <input type="text" id="memberId" name="memberId" required placeholder="Enter Member ID" />
+
+    <label for="issueDate">Issue Date</label>
+    <input type="date" id="issueDate" name="issueDate" required />
+
+    <button type="submit">Issue Book</button>
+  </form>
+  <div id="message" class="message" style="display:none;"></div>
+</div>
+
+<script>
+  document.getElementById('issueBookForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const bookId = document.getElementById('bookId').value.trim();
+    const memberId = document.getElementById('memberId').value.trim();
+    const issueDate = document.getElementById('issueDate').value;
+
+    const messageDiv = document.getElementById('message');
+
+    // Simple validation
+    if (!bookId || !memberId || !issueDate) {
+      messageDiv.style.display = 'block';
+      messageDiv.className = 'message error';
+      messageDiv.textContent = 'Please fill in all fields.';
+      return;
+    }
+
+    // Here you would typically send data to server via AJAX/fetch
+    // For demo, just show confirmation message
+
+    messageDiv.style.display = 'block';
+    messageDiv.className = 'message success';
+    messageDiv.innerHTML = `<strong>Success!</strong><br>Book ID <em>${bookId}</em> has been issued to Member ID <em>${memberId}</em> on <em>${issueDate}</em>.`;
+
+    // Reset form
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
